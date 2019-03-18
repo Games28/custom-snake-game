@@ -25,6 +25,7 @@
 #include "Graphics.h"
 #include "Board.h"
 #include "Snake.h"
+#include "Direction.h"
 #include <random>
 
 
@@ -48,8 +49,11 @@ private:
 	std::mt19937 rng;
 	Snake snek;
 	Location delta_loc{ 1,0 };
+	Direction dir;
 	int SnakeResetMax = 20;
 	int Snakeresetcounter = 0;
+	int headcounter = 0;
+	int headreset = 20;
 	/********************************/
 	/*  User Variables              */
 	/********************************/

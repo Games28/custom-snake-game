@@ -13,22 +13,22 @@ void Board::Drawcell(Location & loc, Color c)
 
 void Board::FelconUp(Location & loc)
 {
-	gfx.FUp(loc.x, loc.y);
+	gfx.FUp(loc.x *dimension, loc.y *dimension);
 }
 
 void Board::FelconDown(Location & loc)
 {
-	gfx.FDown(loc.x, loc.y);
+	gfx.FDown(loc.x*dimension, loc.y*dimension);
 }
 
 void Board::FelconLeft(Location & loc)
 {
-	gfx.FLeft(loc.x, loc.y);
+	gfx.FLeft(loc.x*dimension, loc.y*dimension);
 }
 
 void Board::FelconRight(Location & loc)
 {
-	gfx.FRight(loc.x, loc.y);
+	gfx.FRight(loc.x*dimension, loc.y*dimension);
 }
 
 int Board::Getwidth()

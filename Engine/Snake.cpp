@@ -19,7 +19,7 @@ void Snake::Segment::Draw(Board & brd)
 
 void Snake::Segment::HDrawup(Board & brd)
 {
-	brd.FelconRight(loc);
+	brd.FelconUp(loc);
 }
 
 void Snake::Segment::HDrawDown(Board & brd)
@@ -64,6 +64,51 @@ void Snake::moveby(const Location & delta_loc)
 void Snake::SnakeHeadRight(Board & brd)
 {
 	segments[0].HDrawRight(brd);
+}
+
+void Snake::DirectionUpdate(Keyboard& kbd)
+{
+
+	if (kbd.KeyIsPressed(VK_UP))
+	{
+		dir = Direction::UP;
+	}
+	if (kbd.KeyIsPressed(VK_DOWN))
+	{
+		dir = Direction::DOWN;
+	}
+	if (kbd.KeyIsPressed(VK_LEFT))
+	{
+		dir = Direction::LEFT;
+	}
+	if (kbd.KeyIsPressed(VK_RIGHT))
+	{
+		dir = Direction::RIGHT;
+	}
+}
+
+void Snake::SnakeHeadUpdate(Board & brd)
+{
+	
+		
+		if (dir == Direction::UP)
+		{
+			segments[0].HDrawup(brd);
+		}
+		else if (dir == Direction::DOWN)
+		{
+			segments[0].HDrawDown(brd);
+		}
+		else if (dir == Direction::LEFT)
+		{
+			segments[0].HDrawLeft(brd);
+		}
+		else if (dir == Direction::RIGHT)
+		{
+			segments[0].HDrawRight(brd);
+		}
+		
+	
 }
 
 void Snake::Draw(Board & brd)

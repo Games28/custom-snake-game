@@ -1,5 +1,7 @@
 #pragma once
 #include "Board.h"
+#include "Direction.h"
+#include"Keyboard.h"
 
 class Snake
 {
@@ -26,6 +28,8 @@ public:
 	Snake(const Location& loc);
 	void moveby(const Location& delta_loc);
 	void SnakeHeadRight(Board& brd);
+	void DirectionUpdate(Keyboard& kbd);
+	void SnakeHeadUpdate(Board& brd);
 	void Draw(Board& brd);
 	void Grow();
 	
@@ -35,6 +39,9 @@ private:
 	static constexpr int nSegmentsMax = 100;
 	Segment segments[nSegmentsMax];
 	int nSegments = 1;
+	int counter = 0;
+	int counterReset = 20;
+	Direction dir;
 
 };
 

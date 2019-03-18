@@ -41,6 +41,7 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	//delta movement code
 	if (wnd.kbd.KeyIsPressed(VK_UP))
 	{
 		delta_loc = { 0,-1 };
@@ -57,6 +58,7 @@ void Game::UpdateModel()
 	{
 		delta_loc = { 1,0 };
 	}
+	snek.DirectionUpdate(wnd.kbd);
 	Snakeresetcounter++;
 	if (Snakeresetcounter >= SnakeResetMax)
 	{
@@ -75,4 +77,7 @@ void Game::ComposeFrame()
 {
 	
 	snek.Draw(brd);
+		snek.SnakeHeadUpdate(brd);
+	
+	
 }
