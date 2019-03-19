@@ -66,7 +66,7 @@ void Snake::SnakeHeadRight(Board & brd)
 	segments[0].HDrawRight(brd);
 }
 
-void Snake::DirectionUpdate(Direction& dir)
+void Snake::DirectionUpdate(Direction& dir) // get an kbd error
 {
 
 	if (kbd.KeyIsPressed(VK_UP))

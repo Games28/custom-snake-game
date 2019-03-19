@@ -43,7 +43,7 @@ private:
 	int counter = 0;
 	int counterReset = 20;
 	Direction dir;
-	Keyboard kbd;
+	//Keyboard kbd;
 
 };
 
