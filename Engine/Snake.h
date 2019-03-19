@@ -17,6 +17,7 @@ private:
 		void HDrawDown(Board& brd);
 		void HDrawLeft(Board& brd);
 		void HDrawRight(Board& brd);
+		void DrawHead(Board& brd, Direction dir);
 		void Moveby(const Location& delta_loc);
 		void follow(Segment& next);
 	private:
