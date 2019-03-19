@@ -78,7 +78,7 @@ void Game::UpdateModel()
 			snek.Grow();
 		}
 		snek.moveby(delta_loc);
-		snek.DirectionUpdate(brd,dir);
+		snek.DirectionUpdate(dir);
 	}
 	
 }

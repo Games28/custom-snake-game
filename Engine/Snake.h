@@ -30,7 +30,7 @@ public:
 	Snake(const Location& loc);
 	void moveby(const Location& delta_loc);
 	
-	void DirectionUpdate(Board& brd, Direction& dir);
+	void DirectionUpdate(Direction& in_dir);
 	void Draw(Board& brd);
 	void Grow();
 	

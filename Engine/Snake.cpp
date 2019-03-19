@@ -17,7 +17,7 @@ void Snake::Segment::Draw(Board & brd)
 	brd.Drawcell(loc, c);
 }
 
-/*void Snake::Segment::HDrawup(Board & brd)
+void Snake::Segment::HDrawup(Board & brd)
 {
 	brd.FelconUp(loc);
 }
@@ -30,14 +30,14 @@ void Snake::Segment::HDrawDown(Board & brd)
 void Snake::Segment::HDrawLeft(Board & brd)
 {
 	brd.FelconLeft(loc);
-}*/
+}
 
 void Snake::Segment::HDrawRight(Board & brd)
 {
 	brd.FelconRight(loc);
 }
 
-void Snake::Segment::DrawHead(Board & brd, Direction dir)
+/*void Snake::Segment::DrawHead(Board & brd, Direction dir)
 {
 	if (dir == Direction::UP)
 	{
@@ -55,7 +55,7 @@ void Snake::Segment::DrawHead(Board & brd, Direction dir)
 	{
 		brd.FelconRight(loc);
 	}
-}
+}*/
 
 void Snake::Segment::Moveby(const Location & delta_loc)
 {
@@ -83,9 +83,9 @@ void Snake::moveby(const Location & delta_loc)
 
 
 
-void Snake::DirectionUpdate(Board& brd,Direction& dir) // get an kbd error
+void Snake::DirectionUpdate(Direction& in_dir) 
 {
-	segments[0].DrawHead(brd,dir);
+	dir = in_dir;
 	
 }
 
@@ -97,7 +97,22 @@ void Snake::Draw(Board & brd)
 	{
 		segments[i].Draw(brd);
 	}
-segments[0].HDrawRight(brd);
+	if (dir == Direction::UP)
+	{
+		segments[0].HDrawup(brd);
+  } 
+	else if (dir == Direction::DOWN)
+	{
+		segments[0].HDrawDown(brd);
+	}
+	else if (dir == Direction::LEFT)
+	{
+		segments[0].HDrawLeft(brd);
+	}
+	else if (dir == Direction::RIGHT)
+	{
+		segments[0].HDrawRight(brd);
+	}
 }
 
 void Snake::Grow()
