@@ -45,36 +45,28 @@ void Game::UpdateModel()
 	if (wnd.kbd.KeyIsPressed(VK_UP))
 	{
 		delta_loc = { 0,-1 };
-	}
-	if (wnd.kbd.KeyIsPressed(VK_DOWN))
-	{
-		delta_loc = { 0,1 };
-	}
-	if (wnd.kbd.KeyIsPressed(VK_LEFT))
-	{
-		delta_loc = { -1, 0 };
-	}
-	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
-	{
-		delta_loc = { 1,0 };
-	}
-
-	if (wnd.kbd.KeyIsPressed(VK_UP))
-	{
 		dir = Direction::UP;
 	}
 	if (wnd.kbd.KeyIsPressed(VK_DOWN))
 	{
+		delta_loc = { 0,1 };
 		dir = Direction::DOWN;
+
 	}
 	if (wnd.kbd.KeyIsPressed(VK_LEFT))
 	{
+		delta_loc = { -1, 0 };
 		dir = Direction::LEFT;
+
 	}
 	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
 	{
+		delta_loc = { 1,0 };
 		dir = Direction::RIGHT;
+
 	}
+
+	
 	//snek.DirectionUpdate(wnd.kbd);
 	Snakeresetcounter++;
 	if (Snakeresetcounter >= SnakeResetMax)

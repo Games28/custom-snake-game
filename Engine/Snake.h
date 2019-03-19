@@ -29,7 +29,7 @@ public:
 	Snake(const Location& loc);
 	void moveby(const Location& delta_loc);
 	void SnakeHeadRight(Board& brd);
-	//void DirectionUpdate(Keyboard& kbd);
+	void DirectionUpdate(Direction& dir);
 	void SnakeHeadUpdate(Board& brd);
 	void Draw(Board& brd);
 	void Grow();
@@ -43,6 +43,7 @@ private:
 	int counter = 0;
 	int counterReset = 20;
 	Direction dir;
+	Keyboard kbd;
 
 };
 
