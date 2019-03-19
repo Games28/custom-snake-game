@@ -49,7 +49,7 @@ private:
 	std::mt19937 rng;
 	Snake snek;
 	Location delta_loc{ 1,0 };
-	Direction dir;
+	Direction dir = Direction::RIGHT;
 	int SnakeResetMax = 20;
 	int Snakeresetcounter = 0;
 	int headcounter = 0;

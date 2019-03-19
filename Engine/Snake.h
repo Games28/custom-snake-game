@@ -17,7 +17,6 @@ private:
 		void HDrawDown(Board& brd);
 		void HDrawLeft(Board& brd);
 		void HDrawRight(Board& brd);
-		void DrawHead(Board& brd, Direction dir);
 		void Moveby(const Location& delta_loc);
 		void follow(Segment& next);
 	private:
@@ -29,7 +28,6 @@ private:
 public:
 	Snake(const Location& loc);
 	void moveby(const Location& delta_loc);
-	
 	void DirectionUpdate(Direction& in_dir);
 	void Draw(Board& brd);
 	void Grow();
@@ -43,7 +41,7 @@ private:
 	int counter = 0;
 	int counterReset = 20;
 	Direction dir;
-	//Keyboard kbd;
+	
 
 };
 

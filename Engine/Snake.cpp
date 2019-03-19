@@ -3,7 +3,7 @@
 void Snake::Segment::Inithead(const Location & in_loc)
 {
 	loc = in_loc;
-	//c = Snake::headColor;
+	
 	
 }
 
@@ -37,25 +37,6 @@ void Snake::Segment::HDrawRight(Board & brd)
 	brd.FelconRight(loc);
 }
 
-/*void Snake::Segment::DrawHead(Board & brd, Direction dir)
-{
-	if (dir == Direction::UP)
-	{
-		brd.FelconUp(loc);
-	}
-	else if (dir == Direction::DOWN)
-	{
-		brd.FelconDown(loc);
-	}
-	else if (dir == Direction::LEFT)
-	{
-		brd.FelconLeft(loc);
-	}
-	else if (dir == Direction::RIGHT)
-	{
-		brd.FelconRight(loc);
-	}
-}*/
 
 void Snake::Segment::Moveby(const Location & delta_loc)
 {
@@ -113,6 +94,7 @@ void Snake::Draw(Board & brd)
 	{
 		segments[0].HDrawRight(brd);
 	}
+	
 }
 
 void Snake::Grow()
