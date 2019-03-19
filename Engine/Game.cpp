@@ -78,7 +78,7 @@ void Game::UpdateModel()
 			snek.Grow();
 		}
 		snek.moveby(delta_loc);
-		snek.DirectionUpdate(dir);
+		snek.DirectionUpdate(brd,dir);
 	}
 	
 }
@@ -87,7 +87,7 @@ void Game::ComposeFrame()
 {
 	
 	snek.Draw(brd);
-		snek.SnakeHeadUpdate(brd);
+		
 	
 	
 }

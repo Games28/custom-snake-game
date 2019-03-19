@@ -21,7 +21,7 @@ private:
 		void Moveby(const Location& delta_loc);
 		void follow(Segment& next);
 	private:
-		Board& brd;
+		
 		Location loc;
 		Color c;
 	};
@@ -29,9 +29,8 @@ private:
 public:
 	Snake(const Location& loc);
 	void moveby(const Location& delta_loc);
-	void SnakeHeadRight(Board& brd);
-	void DirectionUpdate(Direction& dir);
-	void SnakeHeadUpdate(Board& brd);
+	
+	void DirectionUpdate(Board& brd, Direction& dir);
 	void Draw(Board& brd);
 	void Grow();
 	
