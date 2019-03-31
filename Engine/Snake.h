@@ -19,6 +19,7 @@ private:
 		void HDrawRight(Board& brd);
 		void Moveby(const Location& delta_loc);
 		void follow(Segment& next);
+		const Location& GetLocation() const;
 	private:
 		
 		Location loc;
@@ -30,11 +31,14 @@ public:
 	void moveby(const Location& delta_loc);
 	void DirectionUpdate(Direction& in_dir);
 	void Draw(Board& brd);
+	Location GetnextHeadLocation(const Location& delta_loc) const;
+	bool InsideTrialExceptEnd(const Location& target) const;
+	bool InsideTrail(const Location& target) const;
 	void Grow();
 	
 private:
 	static constexpr Color headColor = Colors::Green;
-	static constexpr Color BodyColor = Colors::Blue;
+	static constexpr Color BodyColor = Colors::Black;
 	static constexpr int nSegmentsMax = 100;
 	Segment segments[nSegmentsMax];
 	int nSegments = 1;

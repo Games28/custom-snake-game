@@ -41,52 +41,73 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	//delta movement code
-	if (wnd.kbd.KeyIsPressed(VK_UP))
+	if (GameIsStarted && !GameIsOver)
 	{
-		delta_loc = { 0,-1 };
-		dir = Direction::UP;
-	}
-	if (wnd.kbd.KeyIsPressed(VK_DOWN))
-	{
-		delta_loc = { 0,1 };
-		dir = Direction::DOWN;
-
-	}
-	if (wnd.kbd.KeyIsPressed(VK_LEFT))
-	{
-		delta_loc = { -1, 0 };
-		dir = Direction::LEFT;
-
-	}
-	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
-	{
-		delta_loc = { 1,0 };
-		dir = Direction::RIGHT;
-
-	}
-
-	
-	//snek.DirectionUpdate(wnd.kbd);
-	Snakeresetcounter++;
-	if (Snakeresetcounter >= SnakeResetMax)
-	{
-		Snakeresetcounter = 0;
-		
-		if (wnd.kbd.KeyIsPressed(VK_RETURN))
+		if (wnd.kbd.KeyIsPressed(VK_UP))
 		{
-			snek.Grow();
+			delta_loc = { 0,-1 };
+			dir = Direction::UP;
 		}
-		snek.moveby(delta_loc);
-		snek.DirectionUpdate(dir);
+		if (wnd.kbd.KeyIsPressed(VK_DOWN))
+		{
+			delta_loc = { 0,1 };
+			dir = Direction::DOWN;
+
+		}
+		if (wnd.kbd.KeyIsPressed(VK_LEFT))
+		{
+			delta_loc = { -1, 0 };
+			dir = Direction::LEFT;
+
+		}
+		if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+		{
+			delta_loc = { 1,0 };
+			dir = Direction::RIGHT;
+
+		}
+
+
+		//snek.DirectionUpdate(wnd.kbd);
+		Snakeresetcounter++;
+		if (Snakeresetcounter == SnakeResetMax)
+		{
+			Snakeresetcounter = 0;
+			const Location next = snek.GetnextHeadLocation(delta_loc);
+			if (!brd.InsideBoard(next) ||
+				snek.InsideTrialExceptEnd(next))
+			{
+				GameIsOver = true;
+			}
+				if (wnd.kbd.KeyIsPressed(VK_RETURN))
+			{
+				snek.Grow();
+			}
+			snek.moveby(delta_loc);
+			snek.DirectionUpdate(dir);
+		}
+		
+		
 	}
-	
+	if (wnd.kbd.KeyIsPressed(VK_RETURN))
+	{
+		GameIsStarted = true;
+	}
 }
 
 void Game::ComposeFrame()
 {
 	
+	
+	if (!GameIsStarted)
+	{
+		Titles::StartImage(300, 200, gfx);
+	}
 	snek.Draw(brd);
+	if (GameIsOver)
+	{
+		Titles::EndImage(300, 200, gfx);
+	}
 		
 	
 	

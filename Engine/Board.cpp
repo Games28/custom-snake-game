@@ -6,9 +6,10 @@ Board::Board(Graphics & gfx)
 {
 }
 
-void Board::Drawcell(Location & loc, Color c)
+void Board::Drawcell(Location & loc,Color c)
 {
 	gfx.DrawRectDim(loc.x *dimension, loc.y * dimension, dimension, dimension, c);
+	gfx.Cargo(loc.x*dimension, loc.y*dimension);
 }
 
 void Board::FelconUp(Location & loc)
@@ -29,6 +30,12 @@ void Board::FelconLeft(Location & loc)
 void Board::FelconRight(Location & loc)
 {
 	gfx.FRight(loc.x*dimension, loc.y*dimension);
+}
+
+bool Board::InsideBoard(const Location & loc) const
+{
+	return loc.x > 0 && loc.x <= width &&
+		loc.y > 0 && loc.y <= height;
 }
 
 int Board::Getwidth()

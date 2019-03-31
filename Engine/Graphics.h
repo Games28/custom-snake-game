@@ -65,6 +65,7 @@ public:
 	void FDown(int x, int y);
 	void FLeft(int x, int y);
 	void FRight(int x, int y);
+	void Cargo(int x, int y);
 
 	
 	~Graphics();

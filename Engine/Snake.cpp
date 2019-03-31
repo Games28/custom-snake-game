@@ -14,7 +14,7 @@ void Snake::Segment::Initbody()
 
 void Snake::Segment::Draw(Board & brd)
 {
-	brd.Drawcell(loc, c);
+	brd.Drawcell(loc,c);
 }
 
 void Snake::Segment::HDrawup(Board & brd)
@@ -46,6 +46,11 @@ void Snake::Segment::Moveby(const Location & delta_loc)
 void Snake::Segment::follow(Segment & next)
 {
 	loc = next.loc;
+}
+
+const Location & Snake::Segment::GetLocation() const
+{
+	return loc;
 }
 
 Snake::Snake(const Location & loc)
@@ -94,11 +99,46 @@ void Snake::Draw(Board & brd)
 	{
 		segments[0].HDrawRight(brd);
 	}
+	else {
+		segments[0].HDrawRight(brd);
+	}
 	
+}
+
+Location Snake::GetnextHeadLocation(const Location & delta_loc) const
+{
+	Location l(segments[0].GetLocation());
+	l.Add(delta_loc);
+	return l;
+}
+
+bool Snake::InsideTrialExceptEnd(const Location & target) const
+{
+	for (int i = 0; i < nSegments - 1; i++)
+	{
+		if (segments[i].GetLocation() == target)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Snake::InsideTrail(const Location & target) const
+{
+	for (int i = 0; i < nSegments; i++)
+	{
+		if (segments[i].GetLocation() == target)
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 void Snake::Grow()
 {
+	
 	if (nSegments < nSegmentsMax)
 	{
 		

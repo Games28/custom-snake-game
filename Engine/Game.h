@@ -26,6 +26,7 @@
 #include "Board.h"
 #include "Snake.h"
 #include "Direction.h"
+#include "Titles.h"
 #include <random>
 
 
@@ -54,6 +55,8 @@ private:
 	int Snakeresetcounter = 0;
 	int headcounter = 0;
 	int headreset = 20;
+	bool GameIsOver = false;
+	bool GameIsStarted = false;
 	/********************************/
 	/*  User Variables              */
 	/********************************/
