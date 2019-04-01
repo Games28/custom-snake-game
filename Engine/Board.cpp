@@ -6,9 +6,9 @@ Board::Board(Graphics & gfx)
 {
 }
 
-void Board::Drawcell(Location & loc,Color c)
+void Board::Drawcell(Location & loc)
 {
-	gfx.DrawRectDim(loc.x *dimension, loc.y * dimension, dimension, dimension, c);
+	//gfx.DrawRectDim(loc.x *dimension, loc.y * dimension, dimension, dimension, c);
 	gfx.Cargo(loc.x*dimension, loc.y*dimension);
 }
 

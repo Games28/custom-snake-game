@@ -27,6 +27,7 @@
 #include "Snake.h"
 #include "Direction.h"
 #include "Titles.h"
+#include "Cargo.h"
 #include <random>
 
 
@@ -51,6 +52,8 @@ private:
 	Snake snek;
 	Location delta_loc{ 1,0 };
 	Direction dir = Direction::RIGHT;
+	static constexpr int maxCargo = 10;
+	Cargo cargos[maxCargo];
 	int SnakeResetMax = 20;
 	int Snakeresetcounter = 0;
 	int headcounter = 0;

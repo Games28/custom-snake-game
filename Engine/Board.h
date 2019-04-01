@@ -7,7 +7,7 @@ class Board
 {
 public:
 	Board(Graphics& gfx);
-	void Drawcell(Location& loc,Color c);
+	void Drawcell(Location& loc);
 	void FelconUp(Location& loc);
 	void FelconDown(Location& loc);
 	void FelconLeft(Location& loc);
@@ -16,8 +16,8 @@ public:
 	int Getwidth();
 	int Getheight();
 private:
-	static constexpr int dimension = 24;
-	static constexpr int width = 35;
+	static constexpr int dimension = 20;
+	static constexpr int width = 30;
 	static constexpr int height = 25;
 	Graphics& gfx;
 };

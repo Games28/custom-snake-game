@@ -29,6 +29,10 @@ Game::Game(MainWindow& wnd)
 	rng(std::random_device()()),
 	snek({ 2,2 })
 {
+	for (int i = 0; i < maxCargo; i++)
+	{
+		cargos[i].container(rng, brd, snek);
+	}
 }
 
 void Game::Go()
@@ -79,6 +83,14 @@ void Game::UpdateModel()
 			{
 				GameIsOver = true;
 			}
+
+			for (int i = 0; i < maxCargo; i++)
+			{
+				if (cargos[i].IsPickedUp(next, brd))
+				{
+					snek.Grow();
+				}
+			}
 				if (wnd.kbd.KeyIsPressed(VK_RETURN))
 			{
 				snek.Grow();
@@ -97,17 +109,22 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	
+	snek.Draw(brd);
+	for (int i = 0; i < maxCargo; i++)
+	{
+		cargos[i].Draw(brd);
+	}
 	
 	if (!GameIsStarted)
 	{
 		Titles::StartImage(300, 200, gfx);
 	}
-	snek.Draw(brd);
+	
 	if (GameIsOver)
 	{
 		Titles::EndImage(300, 200, gfx);
 	}
+	
 		
 	
 	

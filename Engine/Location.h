@@ -10,7 +10,7 @@ public:
 	}
 	bool operator == (const Location& rhs) const
 	{
-		return x == rhs.x && y == rhs.x;
+		return x == rhs.x && y == rhs.y;
 	}
 	int x;
 	int y;

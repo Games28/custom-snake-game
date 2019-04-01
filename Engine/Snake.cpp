@@ -14,7 +14,7 @@ void Snake::Segment::Initbody()
 
 void Snake::Segment::Draw(Board & brd)
 {
-	brd.Drawcell(loc,c);
+	brd.Drawcell(loc);
 }
 
 void Snake::Segment::HDrawup(Board & brd)
