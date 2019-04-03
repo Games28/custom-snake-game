@@ -7,8 +7,8 @@ void Cargo::container(std::mt19937 & rng, Board & brd, Snake & snake)
 
 void Cargo::Respawn(std::mt19937 & rng, Board & brd, Snake & snake)
 {
-	std::uniform_int_distribution<int> xdist(0, brd.Getwidth() - 1);
-	std::uniform_int_distribution<int> ydist(0, brd.Getheight() - 1);
+	std::uniform_int_distribution<int> xdist(0, brd.Getwidth() - 10);
+	std::uniform_int_distribution<int> ydist(0, brd.Getheight() - 10);
 
 	Location newLoc;
 	do
@@ -24,31 +24,9 @@ void Cargo::Draw(Board & brd)
 	brd.Drawcell(loc);
 }
 
-void Cargo::PickUp(const Location & Floc, const Board & Fbrd)
-{
-	const int FelconRight = Floc.x + Fbrd.Getwidth;
-	const int FelconBottom = Floc.y + Fbrd.Getheight;
-	const int CRight = loc.x + width;
-	const int CBottom = loc.y + height;
 
-	if (FelconRight >= loc.x &&
-		FelconBottom >= loc.y &&
-		CRight >= Floc.x &&
-		CBottom >= Floc.y)
-	{
-		isCollected = true;
-	}
+Location & Cargo::getLocation()
+{
+	return loc;
 }
 
-bool Cargo::IsPickedUp(const Location & Floc,const Board & Fbrd)
-{
-	const int FelconRight = Floc.x + Fbrd.Getwidth;
-	const int FelconBottom = Floc.y + Fbrd.Getheight;
-	const int CRight = loc.x + width;
-	const int CBottom = loc.y + height;
-
-	return FelconRight >= loc.x &&
-		FelconBottom >= loc.y &&
-		CRight >= Floc.x &&
-		CBottom >= Floc.y;
-}

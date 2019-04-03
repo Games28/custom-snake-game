@@ -9,8 +9,8 @@ public:
 	void container(std::mt19937& rng, Board& brd, Snake& snake);
 	void Respawn(std::mt19937& rng, Board& brd, Snake& snake);
 	void Draw(Board& brd);
-	void PickUp(const Location& Floc,const Board& Fbrd);
-	bool IsPickedUp(const Location& Floc,const Board& Fbrd);
+	
+	Location& getLocation();
 private:
 	Location loc;
 	static constexpr int width = 20;

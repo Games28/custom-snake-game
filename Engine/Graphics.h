@@ -66,6 +66,12 @@ public:
 	void FLeft(int x, int y);
 	void FRight(int x, int y);
 	void Cargo(int x, int y);
+	void TieFighter(int x, int y);
+	void Explosion(int x, int y);
+	void DrawBrightStar1(int x, int y);
+		void DrawBrightStar2(int x, int y);
+		void DrawDStar(int x, int y);
+	
 
 	
 	~Graphics();

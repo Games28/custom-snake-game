@@ -33,6 +33,18 @@ Game::Game(MainWindow& wnd)
 	{
 		cargos[i].container(rng, brd, snek);
 	}
+	for (int i = 0; i < maxTie; i++)
+	{
+		ties[i].tiefighter(rng, brd, snek);
+	}
+	for (int i = 0; i < maxRegularStars; i++)
+	{
+		Regularstars[i].StarSet(rng, brd);
+	}
+	for (int i = 0; i < maxBrightStars; i++)
+	{
+		Brightstars[i].StarSet(rng, brd);
+	}
 }
 
 void Game::Go()
@@ -70,30 +82,39 @@ void Game::UpdateModel()
 			dir = Direction::RIGHT;
 
 		}
-
+		BrightStarCounter++;
+		if (BrightStarCounter >= BrightStarresetMax)
+		{
+			BrightStarCounter = 0;
+		}
+		
 
 		//snek.DirectionUpdate(wnd.kbd);
 		Snakeresetcounter++;
 		if (Snakeresetcounter == SnakeResetMax)
 		{
 			Snakeresetcounter = 0;
-			const Location next = snek.GetnextHeadLocation(delta_loc);
-			if (!brd.InsideBoard(next) ||
-				snek.InsideTrialExceptEnd(next))
+			for (int i = 0; i < maxTie; i++)
 			{
-				GameIsOver = true;
+				const Location next = snek.GetnextHeadLocation(delta_loc);
+				if (!brd.InsideBoard(next) ||
+					snek.InsideTrialExceptEnd(next)||
+					ties[i].Collision(next))
+				{
+					GameIsOver = true;
+				}
 			}
-
 			for (int i = 0; i < maxCargo; i++)
 			{
-				if (cargos[i].IsPickedUp(next, brd))
+				
+				if (snek.GetnextHeadLocation(delta_loc) == cargos[i].getLocation())
 				{
 					snek.Grow();
 				}
-			}
-				if (wnd.kbd.KeyIsPressed(VK_RETURN))
-			{
-				snek.Grow();
+				if (snek.GetnextHeadLocation(delta_loc) == cargos[i].getLocation())
+				{
+					cargos[i].Respawn(rng, brd, snek);
+				}
 			}
 			snek.moveby(delta_loc);
 			snek.DirectionUpdate(dir);
@@ -109,23 +130,48 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	snek.Draw(brd);
+	for (int i = 0; i < maxRegularStars; i++)
+	{
+		Regularstars[i].DrawDStar(brd);
+	}
+	for (int i = 0; i < maxBrightStars; i++)
+	{
+		if (BrightStarCounter > 50)
+		{
+			Brightstars[i].DrawBrightStar2(brd);
+		}
+		else if(BrightStarCounter < 50)
+		{
+			Brightstars[i].DrawBrightStar1(brd);
+		}
+	}
 	for (int i = 0; i < maxCargo; i++)
 	{
 		cargos[i].Draw(brd);
 	}
 	
+	for (int i = 0; i < maxTie; i++)
+	{
+		ties[i].Draw(brd);
+		if (ties[i].Collision(snek.GetnextHeadLocation(delta_loc)))
+		{
+			ties[i].DrawExplode(brd);
+		}
+		if (GameIsOver)
+		{
+			Titles::EndImage(250, 200, gfx);
+		}
+	}
+	snek.Draw(brd);
+	
 	if (!GameIsStarted)
 	{
-		Titles::StartImage(300, 200, gfx);
+		Titles::StartImage(250, 200, gfx);
 	}
 	
-	if (GameIsOver)
-	{
-		Titles::EndImage(300, 200, gfx);
-	}
+	brd.DrawBoundry();
 	
-		
+	Titles::Screentitle(250, 520, gfx);
 	
 	
 }

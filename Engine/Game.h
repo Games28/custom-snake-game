@@ -28,6 +28,8 @@
 #include "Direction.h"
 #include "Titles.h"
 #include "Cargo.h"
+#include "Tiefighter.h"
+#include "Stars.h"
 #include <random>
 
 
@@ -52,6 +54,14 @@ private:
 	Snake snek;
 	Location delta_loc{ 1,0 };
 	Direction dir = Direction::RIGHT;
+	static constexpr int maxRegularStars = 80;
+	Stars Regularstars[maxRegularStars];
+	static constexpr int maxBrightStars = 40;
+	Stars Brightstars[maxBrightStars];
+	int BrightStarresetMax = 100;
+	int BrightStarCounter = 0;
+	static constexpr int maxTie = 5;
+	Tiefighter ties[maxTie];
 	static constexpr int maxCargo = 10;
 	Cargo cargos[maxCargo];
 	int SnakeResetMax = 20;
