@@ -7,8 +7,8 @@ void Cargo::container(std::mt19937 & rng, Board & brd, Snake & snake)
 
 void Cargo::Respawn(std::mt19937 & rng, Board & brd, Snake & snake)
 {
-	std::uniform_int_distribution<int> xdist(0, brd.Getwidth() - 10);
-	std::uniform_int_distribution<int> ydist(0, brd.Getheight() - 10);
+	std::uniform_int_distribution<int> xdist(0, brd.Getwidth() - 1);
+	std::uniform_int_distribution<int> ydist(0, brd.Getheight() - 1);
 
 	Location newLoc;
 	do

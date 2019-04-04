@@ -54,9 +54,9 @@ private:
 	Snake snek;
 	Location delta_loc{ 1,0 };
 	Direction dir = Direction::RIGHT;
-	static constexpr int maxRegularStars = 80;
+	static constexpr int maxRegularStars = 100;
 	Stars Regularstars[maxRegularStars];
-	static constexpr int maxBrightStars = 40;
+	static constexpr int maxBrightStars = 50;
 	Stars Brightstars[maxBrightStars];
 	int BrightStarresetMax = 100;
 	int BrightStarCounter = 0;

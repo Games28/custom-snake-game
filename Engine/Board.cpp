@@ -60,16 +60,16 @@ void Board::BrightStar2(Location & loc)
 
 bool Board::InsideBoard(const Location & loc) const
 {
-	return loc.x > 0 && loc.x <= width &&
-		loc.y > 0 && loc.y <= height;
+	return loc.x > 0 && loc.x <= width - 2 &&
+		loc.y > 0 && loc.y <= height - 2;
 }
 
 void Board::DrawBoundry()
 {
 	const int top = y;
 	const int left = x;
-	const int bottom = top + (borderWidth + borderPadding) * 2 + height * dimension;
-	const int right = left + (borderWidth + borderPadding) * 2 + width * dimension;
+	const int bottom = top + (borderWidth + borderPadding) * 2 + height * dimension ;
+	const int right = left + (borderWidth + borderPadding) * 2 + width  * dimension ;
 	//top
 	gfx.DrawRect(left, top, right, top + borderWidth, borderColor);
 	//left

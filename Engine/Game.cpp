@@ -57,121 +57,128 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	if (GameIsStarted && !GameIsOver)
+	if (GameIsStarted)
 	{
-		if (wnd.kbd.KeyIsPressed(VK_UP))
+		if (!GameIsOver)
 		{
-			delta_loc = { 0,-1 };
-			dir = Direction::UP;
-		}
-		if (wnd.kbd.KeyIsPressed(VK_DOWN))
-		{
-			delta_loc = { 0,1 };
-			dir = Direction::DOWN;
-
-		}
-		if (wnd.kbd.KeyIsPressed(VK_LEFT))
-		{
-			delta_loc = { -1, 0 };
-			dir = Direction::LEFT;
-
-		}
-		if (wnd.kbd.KeyIsPressed(VK_RIGHT))
-		{
-			delta_loc = { 1,0 };
-			dir = Direction::RIGHT;
-
-		}
-		BrightStarCounter++;
-		if (BrightStarCounter >= BrightStarresetMax)
-		{
-			BrightStarCounter = 0;
-		}
-		
-
-		//snek.DirectionUpdate(wnd.kbd);
-		Snakeresetcounter++;
-		if (Snakeresetcounter == SnakeResetMax)
-		{
-			Snakeresetcounter = 0;
-			for (int i = 0; i < maxTie; i++)
+			if (wnd.kbd.KeyIsPressed(VK_UP))
 			{
-				const Location next = snek.GetnextHeadLocation(delta_loc);
-				if (!brd.InsideBoard(next) ||
-					snek.InsideTrialExceptEnd(next)||
-					ties[i].Collision(next))
-				{
-					GameIsOver = true;
-				}
+				delta_loc = { 0,-1 };
+				dir = Direction::UP;
 			}
-			for (int i = 0; i < maxCargo; i++)
+			if (wnd.kbd.KeyIsPressed(VK_DOWN))
 			{
-				
-				if (snek.GetnextHeadLocation(delta_loc) == cargos[i].getLocation())
-				{
-					snek.Grow();
-				}
-				if (snek.GetnextHeadLocation(delta_loc) == cargos[i].getLocation())
-				{
-					cargos[i].Respawn(rng, brd, snek);
-				}
+				delta_loc = { 0,1 };
+				dir = Direction::DOWN;
+
 			}
-			snek.moveby(delta_loc);
-			snek.DirectionUpdate(dir);
+			if (wnd.kbd.KeyIsPressed(VK_LEFT))
+			{
+				delta_loc = { -1, 0 };
+				dir = Direction::LEFT;
+
+			}
+			if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+			{
+				delta_loc = { 1,0 };
+				dir = Direction::RIGHT;
+
+			}
+			BrightStarCounter++;
+			if (BrightStarCounter >= BrightStarresetMax)
+			{
+				BrightStarCounter = 0;
+			}
+
+
+			//snek.DirectionUpdate(wnd.kbd);
+			Snakeresetcounter++;
+			if (Snakeresetcounter == SnakeResetMax)
+			{
+				Snakeresetcounter = 0;
+				for (int i = 0; i < maxTie; i++)
+				{
+					const Location next = snek.GetnextHeadLocation(delta_loc);
+					if (!brd.InsideBoard(next) ||
+						snek.InsideTrialExceptEnd(next) ||
+						ties[i].Collision(next))
+					{
+						GameIsOver = true;
+					}
+				}
+				for (int i = 0; i < maxCargo; i++)
+				{
+
+					if (snek.GetnextHeadLocation(delta_loc) == cargos[i].getLocation())
+					{
+						cargos[i].Respawn(rng, brd, snek);
+						snek.Grow();
+
+					}
+
+				}
+				snek.moveby(delta_loc);
+				snek.DirectionUpdate(dir);
+			}
+
+
 		}
-		
-		
 	}
-	if (wnd.kbd.KeyIsPressed(VK_RETURN))
+	else
 	{
-		GameIsStarted = true;
+		GameIsStarted = wnd.kbd.KeyIsPressed(VK_RETURN);
 	}
 }
 
 void Game::ComposeFrame()
 {
-	for (int i = 0; i < maxRegularStars; i++)
+	if (GameIsStarted)
 	{
-		Regularstars[i].DrawDStar(brd);
-	}
-	for (int i = 0; i < maxBrightStars; i++)
-	{
-		if (BrightStarCounter > 50)
+		
+
+		for (int i = 0; i < maxRegularStars; i++)
 		{
-			Brightstars[i].DrawBrightStar2(brd);
+			Regularstars[i].DrawDStar(brd);
 		}
-		else if(BrightStarCounter < 50)
+		for (int i = 0; i < maxBrightStars; i++)
 		{
-			Brightstars[i].DrawBrightStar1(brd);
+			if (BrightStarCounter > 50)
+			{
+				Brightstars[i].DrawBrightStar2(brd);
+			}
+			else if (BrightStarCounter < 50)
+			{
+				Brightstars[i].DrawBrightStar1(brd);
+			}
 		}
-	}
-	for (int i = 0; i < maxCargo; i++)
-	{
-		cargos[i].Draw(brd);
-	}
-	
-	for (int i = 0; i < maxTie; i++)
-	{
-		ties[i].Draw(brd);
-		if (ties[i].Collision(snek.GetnextHeadLocation(delta_loc)))
+		for (int i = 0; i < maxCargo; i++)
 		{
-			ties[i].DrawExplode(brd);
+			cargos[i].Draw(brd);
 		}
-		if (GameIsOver)
+
+		for (int i = 0; i < maxTie; i++)
 		{
-			Titles::EndImage(250, 200, gfx);
+			ties[i].Draw(brd);
+			if (ties[i].Collision(snek.GetnextHeadLocation(delta_loc)))
+			{
+				ties[i].DrawExplode(brd);
+			}
+			if (GameIsOver)
+			{
+				Titles::EndImage(350, 265, gfx);
+			}
 		}
+		snek.Draw(brd);
+
+
+
+		brd.DrawBoundry();
+
+		Titles::Screentitle(350, 530, gfx);
+
 	}
-	snek.Draw(brd);
-	
-	if (!GameIsStarted)
+	else
 	{
-		Titles::StartImage(250, 200, gfx);
+		Titles::StartImage(350, 265, gfx);
 	}
-	
-	brd.DrawBoundry();
-	
-	Titles::Screentitle(250, 520, gfx);
-	
-	
 }
