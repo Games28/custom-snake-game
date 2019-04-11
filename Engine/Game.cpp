@@ -137,6 +137,7 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
+	gfx.DrawLine(100, 100, 50, 2);
 	if (GameIsStarted)
 	{
 		

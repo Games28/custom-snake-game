@@ -334,6 +334,17 @@ void Graphics::DrawRect(int x0, int y0, int x1, int y1, Color c)
 	}
 }
 
+void Graphics::DrawLine(int in_x, int in_y, int length, int width)
+{
+	for (int y = in_y; y < width; y++)
+	{
+		for (int x = in_x; x < length; x++)
+		{
+			PutPixel(x, y, Colors::Blue);
+		}
+	}
+}
+
 void Graphics::FUp(int x, int y)
 {
 	PutPixel(x + 0, y + 0, 0, 0, 0);
