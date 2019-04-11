@@ -67,7 +67,7 @@ private:
 	int SnakeResetMax = 20;
 	int Snakeresetcounter = 0;
 	int headcounter = 0;
-	int headreset = 20;
+	int headreset = 30;
 	bool GameIsOver = false;
 	bool GameIsStarted = false;
 	/********************************/

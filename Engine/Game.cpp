@@ -84,6 +84,7 @@ void Game::UpdateModel()
 				dir = Direction::RIGHT;
 
 			}
+			
 			BrightStarCounter++;
 			if (BrightStarCounter >= BrightStarresetMax)
 			{
@@ -92,10 +93,12 @@ void Game::UpdateModel()
 
 
 			//snek.DirectionUpdate(wnd.kbd);
+			
 			Snakeresetcounter++;
 			if (Snakeresetcounter == SnakeResetMax)
 			{
 				Snakeresetcounter = 0;
+				
 				for (int i = 0; i < maxTie; i++)
 				{
 					const Location next = snek.GetnextHeadLocation(delta_loc);
@@ -117,8 +120,10 @@ void Game::UpdateModel()
 					}
 
 				}
-				snek.moveby(delta_loc);
 				snek.DirectionUpdate(dir);
+				snek.moveby(delta_loc);
+				
+				
 			}
 
 
@@ -155,19 +160,17 @@ void Game::ComposeFrame()
 		{
 			cargos[i].Draw(brd);
 		}
-
-		for (int i = 0; i < maxTie; i++)
-		{
-			ties[i].Draw(brd);
-			if (ties[i].Collision(snek.GetnextHeadLocation(delta_loc)))
+		
+			for (int i = 0; i < maxTie; i++)
 			{
-				ties[i].DrawExplode(brd);
+				ties[i].Draw(brd);
+				
+				if (GameIsOver)
+				{
+					Titles::EndImage(350, 265, gfx);
+				}
 			}
-			if (GameIsOver)
-			{
-				Titles::EndImage(350, 265, gfx);
-			}
-		}
+		
 		snek.Draw(brd);
 
 
