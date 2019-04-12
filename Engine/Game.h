@@ -70,6 +70,7 @@ private:
 	int headreset = 30;
 	bool GameIsOver = false;
 	bool GameIsStarted = false;
+	Color c = Colors::Blue;
 	/********************************/
 	/*  User Variables              */
 	/********************************/

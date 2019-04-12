@@ -8,6 +8,7 @@ class Board
 public:
 	Board(Graphics& gfx);
 	void Drawcell(Location& loc);
+	void LineDraw(Location& loc);
 	void FelconUp(Location& loc);
 	void FelconDown(Location& loc);
 	void FelconLeft(Location& loc);
@@ -30,6 +31,7 @@ private:
 	static constexpr int borderWidth = 4;
 	static constexpr int borderPadding = 2;
 	static constexpr Color borderColor = Colors::Yellow;
+	static constexpr Color col = Colors::Blue;
 	const int off_x = x + borderWidth + borderPadding;
 	const int off_y = y + borderWidth + borderPadding;
 	Graphics& gfx;

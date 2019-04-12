@@ -13,6 +13,15 @@ void Board::Drawcell(Location & loc)
 	gfx.Cargo(loc.x*dimension + off_x, loc.y * dimension + off_y);
 }
 
+void Board::LineDraw(Location & loc)
+{
+	gfx.DrawLine(loc.x*dimension + off_x, loc.y*dimension + off_y, dimension, true, col);
+	gfx.DrawLine(loc.x*dimension + off_x, loc.y*dimension + off_y, dimension, false, col);
+	gfx.DrawLine(loc.x*dimension + off_x, loc.y*dimension + off_y, 20 + dimension, false, col);
+	//gfx.DrawLine(loc.x*dimension + off_x, loc.y*dimension + off_y, dimension, false, col);
+	
+}
+
 void Board::FelconUp(Location & loc)
 {
 	gfx.FUp(loc.x *dimension + off_x, loc.y * dimension + off_y);
@@ -68,6 +77,19 @@ void Board::DrawBoundry()
 {
 	const int top = y;
 	const int left = x;
+	const int bottom = top + (borderWidth + borderPadding) * 2 + height * dimension;
+	const int right = left + (borderWidth + borderPadding) * 2 + width * dimension;
+	//top
+	gfx.DrawRect(left, top, right, top + borderWidth, borderColor);
+	//left
+	gfx.DrawRect(left, top + borderWidth, left + borderWidth, bottom - borderWidth, borderColor);
+	//right
+	gfx.DrawRect(right - borderWidth, top + borderWidth, right, bottom - borderWidth, borderColor);
+	//bottom
+	gfx.DrawRect(left, bottom - borderWidth, right, bottom, borderColor);
+	
+	/*const int top = y;
+	const int left = x;
 	const int bottom = top + (borderWidth + borderPadding) * 2 + height * dimension ;
 	const int right = left + (borderWidth + borderPadding) * 2 + width  * dimension ;
 	//top
@@ -77,7 +99,7 @@ void Board::DrawBoundry()
 	//right
 	gfx.DrawRect(right - borderWidth, top + borderWidth, right, bottom - borderWidth, borderColor);
 	//bottom
-	gfx.DrawRect(left, bottom - borderWidth, right, bottom, borderColor);
+	gfx.DrawRect(left, bottom - borderWidth, right, bottom, borderColor);*/
 }
 
 int Board::Getwidth()

@@ -334,14 +334,19 @@ void Graphics::DrawRect(int x0, int y0, int x1, int y1, Color c)
 	}
 }
 
-void Graphics::DrawLine(int in_x, int in_y, int length, int width)
+
+
+void Graphics::DrawLine(unsigned int x, unsigned int y, int length, bool isVerticle, Color c)
 {
-	for (int y = in_y; y < width; y++)
+	if (isVerticle)
 	{
-		for (int x = in_x; x < length; x++)
-		{
-			PutPixel(x, y, Colors::Blue);
-		}
+		for (int i = y; i < y + length; i++)
+			PutPixel(x, i, c);  // draws vertical line as " i " is changing in the " y " axis
+	}
+	else
+	{
+		for (int i = x; i < x + length; i++)
+			PutPixel(i, y, c);  //draws horizontal line and " i " changing the " x " axis
 	}
 }
 
