@@ -15,10 +15,8 @@ void Board::Drawcell(Location & loc)
 
 void Board::LineDraw(Location & loc)
 {
-	gfx.DrawLine(loc.x*dimension + off_x, loc.y*dimension + off_y, dimension, true, col);
-	gfx.DrawLine(loc.x*dimension + off_x, loc.y*dimension + off_y, dimension, false, col);
-	gfx.DrawLine(loc.x*dimension + off_x, loc.y*dimension + off_y, 20 + dimension, false, col);
-	//gfx.DrawLine(loc.x*dimension + off_x, loc.y*dimension + off_y, dimension, false, col);
+	gfx.Drawbox(loc.x*dimension, loc.y*dimension, dimension , dimension, col);
+
 	
 }
 

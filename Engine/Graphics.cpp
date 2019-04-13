@@ -350,6 +350,18 @@ void Graphics::DrawLine(unsigned int x, unsigned int y, int length, bool isVerti
 	}
 }
 
+void Graphics::Drawbox(unsigned int x, unsigned int y, unsigned int width, unsigned int height, Color c)
+{
+	//top
+	DrawLine(x, y, width, false, c);
+	//left
+	DrawLine(x, y, height, true, c);
+	//right
+	DrawLine(x + width, y, height, true, c);
+	//bottom
+	DrawLine(x, y + height, width, false, c);
+}
+
 void Graphics::FUp(int x, int y)
 {
 	PutPixel(x + 0, y + 0, 0, 0, 0);

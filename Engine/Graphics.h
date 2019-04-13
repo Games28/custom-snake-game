@@ -62,6 +62,7 @@ public:
 		DrawRect(x0, y0, x0 + width, y0 + height, c);
 	}
 	void DrawLine(unsigned int x, unsigned int y, int length, bool isVerticle, Color c);
+	void Drawbox(unsigned int x, unsigned int y, unsigned int width, unsigned int height, Color c);
 	void FUp(int x, int y);
 	void FDown(int x, int y);
 	void FLeft(int x, int y);
