@@ -73,7 +73,7 @@ bool Board::InsideBoard(const Location & loc) const
 
 void Board::DrawBoundry()
 {
-	const int top = y;
+	/*const int top = y;
 	const int left = x;
 	const int bottom = top + (borderWidth + borderPadding) * 2 + height * dimension;
 	const int right = left + (borderWidth + borderPadding) * 2 + width * dimension;
@@ -84,20 +84,12 @@ void Board::DrawBoundry()
 	//right
 	gfx.DrawRect(right - borderWidth, top + borderWidth, right, bottom - borderWidth, borderColor);
 	//bottom
-	gfx.DrawRect(left, bottom - borderWidth, right, bottom, borderColor);
-	
-	/*const int top = y;
-	const int left = x;
-	const int bottom = top + (borderWidth + borderPadding) * 2 + height * dimension ;
-	const int right = left + (borderWidth + borderPadding) * 2 + width  * dimension ;
-	//top
-	gfx.DrawRect(left, top, right, top + borderWidth, borderColor);
-	//left
-	gfx.DrawRect(left, top + borderWidth, left + borderWidth, bottom - borderWidth, borderColor);
-	//right
-	gfx.DrawRect(right - borderWidth, top + borderWidth, right, bottom - borderWidth, borderColor);
-	//bottom
 	gfx.DrawRect(left, bottom - borderWidth, right, bottom, borderColor);*/
+
+	gfx.Drawbox(x, y, width*dimension, height*dimension, borderColor);
+	
+
+
 }
 
 int Board::Getwidth()
