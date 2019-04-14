@@ -86,7 +86,15 @@ void Board::DrawBoundry()
 	//bottom
 	gfx.DrawRect(left, bottom - borderWidth, right, bottom, borderColor);*/
 
-	gfx.Drawbox(x, y, width*dimension, height*dimension, borderColor);
+	for(int lx = x; lx < width; lx++)
+	{
+		for (int ly = y; ly < height;ly++)
+		{
+			gfx.DrawLine(lx * dimension, ly* dimension, width, false, col);
+			gfx.DrawLine(lx * dimension, ly* dimension, height, true, col);
+		}
+
+	}
 	
 
 
