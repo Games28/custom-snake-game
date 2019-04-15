@@ -364,8 +364,16 @@ void Graphics::Drawbox(unsigned int x, unsigned int y, unsigned int width, unsig
 
 void Graphics::DrawGrid(int x, int y, int numberOfCells_X, int numberOfCells_Y, int cellSize, Color gc)
 {
-	DrawLine(x * cellSize, y * cellSize, numberOfCells_X, false, gc);
-	DrawLine(x * cellSize, y * cellSize, numberOfCells_Y, true, gc);
+	for (int line_y = 0; line_y < numberOfCells_Y; line_y++)
+	{
+		for (int line_x = 0; line_x < numberOfCells_X; line_x++)
+		{
+			DrawLine(line_x *cellSize, line_y * cellSize, numberOfCells_X, false, gc);
+			DrawLine(line_x *cellSize, line_y * cellSize, numberOfCells_Y, true, gc);
+
+		}
+	}
+	
 }
 
 
