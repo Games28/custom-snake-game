@@ -20,6 +20,8 @@ void Board::LineDraw(Location & loc)
 	
 }
 
+
+
 void Board::FelconUp(Location & loc)
 {
 	gfx.FUp(loc.x *dimension + off_x, loc.y * dimension + off_y);
@@ -85,19 +87,9 @@ void Board::DrawBoundry()
 	gfx.DrawRect(right - borderWidth, top + borderWidth, right, bottom - borderWidth, borderColor);
 	//bottom
 	gfx.DrawRect(left, bottom - borderWidth, right, bottom, borderColor);*/
-
-	for(int lx = x; lx < width; lx++)
-	{
-		for (int ly = y; ly < height;ly++)
-		{
-			gfx.DrawLine(lx * dimension, ly* dimension, width, false, col);
-			gfx.DrawLine(lx * dimension, ly* dimension, height, true, col);
-		}
-
-	}
 	
-
-
+	
+	gfx.DrawGrid(x, y , width, height, dimension, col);
 }
 
 int Board::Getwidth()

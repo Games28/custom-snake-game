@@ -362,6 +362,14 @@ void Graphics::Drawbox(unsigned int x, unsigned int y, unsigned int width, unsig
 	DrawLine(x, y + height, width, false, c);
 }
 
+void Graphics::DrawGrid(int x, int y, int numberOfCells_X, int numberOfCells_Y, int cellSize, Color gc)
+{
+	DrawLine(x * cellSize, y * cellSize, numberOfCells_X, false, gc);
+	DrawLine(x * cellSize, y * cellSize, numberOfCells_Y, true, gc);
+}
+
+
+
 void Graphics::FUp(int x, int y)
 {
 	PutPixel(x + 0, y + 0, 0, 0, 0);
