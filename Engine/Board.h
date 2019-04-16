@@ -23,11 +23,11 @@ public:
 	int Getwidth();
 	int Getheight();
 private:
-	static constexpr int dimension = 20;
-	static constexpr int width = 32;
-	static constexpr int height = 24;
-	int x = 70;
-	int y = 50;
+	static constexpr int dimension = 25;
+	static constexpr int width = 20;
+	static constexpr int height = 20;
+	int x = 0;
+	int y = 0;
 	static constexpr int borderWidth = 4;
 	static constexpr int borderPadding = 2;
 	static constexpr Color borderColor = Colors::Yellow;

@@ -20,25 +20,25 @@ void Snake::Segment::Draw(Board & brd)
 void Snake::Segment::HDrawup(Board & brd)
 {
 	brd.FelconUp(loc);
-	brd.LineDraw(loc);
+	//brd.LineDraw(loc);
 }
 
 void Snake::Segment::HDrawDown(Board & brd)
 {
 	brd.FelconDown(loc);
-	brd.LineDraw(loc);
+	//brd.LineDraw(loc);
 }
 
 void Snake::Segment::HDrawLeft(Board & brd)
 {
 	brd.FelconLeft(loc);
-	brd.LineDraw(loc);
+	//brd.LineDraw(loc);
 }
 
 void Snake::Segment::HDrawRight(Board & brd)
 {
 	brd.FelconRight(loc);
-	brd.LineDraw(loc);
+	//brd.LineDraw(loc);
 }
 
 

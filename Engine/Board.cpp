@@ -89,7 +89,7 @@ void Board::DrawBoundry()
 	gfx.DrawRect(left, bottom - borderWidth, right, bottom, borderColor);*/
 	
 	
-	gfx.DrawGrid(x, y , width, height, dimension, borderColor);
+	gfx.DrawGrid(x + off_x, y + off_y, width, height, dimension, borderColor);
 }
 
 int Board::Getwidth()

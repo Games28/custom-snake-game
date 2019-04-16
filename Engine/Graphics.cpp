@@ -362,16 +362,23 @@ void Graphics::Drawbox(unsigned int x, unsigned int y, unsigned int width, unsig
 	DrawLine(x, y + height, width, false, c);
 }
 
-void Graphics::DrawGrid(int x, int y, int numberOfCells_X, int numberOfCells_Y, int cellSize, Color gc)
+void Graphics::DrawGrid(int x, int y, int Cells_X, int Cells_Y, int cellSize, Color gc)
 {
-	for (int line_y = 0; line_y < numberOfCells_Y; line_y++)
+	
+	
+	for (int i = 0 ; i <= Cells_X; i++)// vertical loops
 	{
-		for (int line_x = 0; line_x < numberOfCells_X; line_x++)
-		{
-			DrawLine(line_x *cellSize, line_y * cellSize, numberOfCells_X, false, gc);
-			DrawLine(line_x *cellSize, line_y * cellSize, numberOfCells_Y, true, gc);
+		//DrawLine((line_x *cellSize) + x, (line_y * cellSize) + y, Cells_X * cellSize, false, gc); //vertical
+		DrawLine((i * cellSize) + x, y, Cells_Y * cellSize, true, gc);
+			
 
-		}
+	}
+	;
+	
+	for (int i = 0; i <= Cells_Y; i++)// horizontail loops
+	{
+		//DrawLine((line_x *cellSize) + x, (line_y * cellSize) + y, Cells_Y * cellSize, true, gc);//horiztional
+		DrawLine(x, (i * cellSize )+ y, Cells_X * cellSize, false, gc);
 	}
 	
 }
