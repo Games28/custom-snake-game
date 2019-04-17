@@ -368,19 +368,30 @@ void Graphics::DrawGrid(int x, int y, int Cells_X, int Cells_Y, int cellSize, Co
 	
 	for (int i = 0 ; i <= Cells_X; i++)// vertical loops
 	{
-		//DrawLine((line_x *cellSize) + x, (line_y * cellSize) + y, Cells_X * cellSize, false, gc); //vertical
-		DrawLine((i * cellSize) + x, y, Cells_Y * cellSize, true, gc);
-			
-
+		
+		DrawLine((i * cellSize) + x, y, Cells_Y * cellSize, true, gc);// only x is increasing 
 	}
 	;
 	
 	for (int i = 0; i <= Cells_Y; i++)// horizontail loops
 	{
-		//DrawLine((line_x *cellSize) + x, (line_y * cellSize) + y, Cells_Y * cellSize, true, gc);//horiztional
-		DrawLine(x, (i * cellSize )+ y, Cells_X * cellSize, false, gc);
+		
+		DrawLine(x, (i * cellSize )+ y, Cells_X * cellSize, false, gc); // only y is increas
+		//DrawLine( x , (i * cellSize) + y, Cells_X * cellSize, false, gc);
 	}
 	
+}
+
+void Graphics::DrawBorder(int x, int y, int width, int height, Color c, int linewidth, int margin)
+{
+	//top
+	DrawRect(x - linewidth , y - linewidth, width + linewidth, linewidth, c);
+	//left
+	DrawRect(x-linewidth, y - linewidth, linewidth, height + linewidth, c);
+	//right
+	DrawRect(x + width - linewidth, y - linewidth, linewidth, height + linewidth, c);
+	//bottom
+	DrawRect(x - linewidth, y + height - linewidth, width + linewidth, linewidth, c);
 }
 
 

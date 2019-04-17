@@ -64,6 +64,7 @@ public:
 	void DrawLine(unsigned int x, unsigned int y, int length, bool isVerticle, Color c);
 	void Drawbox(unsigned int x, unsigned int y, unsigned int width, unsigned int height, Color c);
 	void DrawGrid(int x, int y, int Cells_X, int Cells_Y, int cellSize, Color gc);
+	void DrawBorder(int x, int y, int width, int height, Color c, int linewidth, int margin);
 	void FUp(int x, int y);
 	void FDown(int x, int y);
 	void FLeft(int x, int y);
