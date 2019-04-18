@@ -46,6 +46,22 @@ private:
 		float u,v;			// texcoords
 	};
 public:
+	struct Margin 
+	{
+	
+		Margin(int L, int R, int T, int B)
+		{
+			Left = L;
+			Right = R;
+			Top= T;
+			botm = B;
+		}
+
+		int Left;
+		int Right;
+		int Top;
+		int botm;
+	};
 	Graphics( class HWNDKey& key );
 	Graphics( const Graphics& ) = delete;
 	Graphics& operator=( const Graphics& ) = delete;
@@ -64,7 +80,7 @@ public:
 	void DrawLine(unsigned int x, unsigned int y, int length, bool isVerticle, Color c);
 	void Drawbox(unsigned int x, unsigned int y, unsigned int width, unsigned int height, Color c);
 	void DrawGrid(int x, int y, int Cells_X, int Cells_Y, int cellSize, Color gc);
-	void DrawBorder(int x, int y, int width, int height, Color c, int linewidth, int margin);
+	void DrawBorder(int x, int y, int width, int height, Color c, int linewidth, Graphics::Margin margin);
 	void FUp(int x, int y);
 	void FDown(int x, int y);
 	void FLeft(int x, int y);

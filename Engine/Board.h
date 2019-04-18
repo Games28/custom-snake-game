@@ -38,4 +38,6 @@ private:
 	const int off_x = x;
 	const int off_y = y;
 	Graphics& gfx;
+	Graphics::Margin margin;
+
 };

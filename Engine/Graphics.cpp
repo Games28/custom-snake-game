@@ -382,16 +382,22 @@ void Graphics::DrawGrid(int x, int y, int Cells_X, int Cells_Y, int cellSize, Co
 	
 }
 
-void Graphics::DrawBorder(int x, int y, int width, int height, Color c, int linewidth, int margin)
+void Graphics::DrawBorder(int x, int y, int width, int height, Color c, int linewidth, Graphics::Margin margin)
 {
+	
+	
+	int Left = x - linewidth - margin.Left;
+    int Right = x + width +margin.Right;
+	int Top = y - linewidth -margin.Top;
+    int botm = y + height + margin.botm;
 	//top
-	DrawRect(x - linewidth , y - linewidth, width + linewidth, linewidth, c);
+	DrawRect(Left, Top, Right + linewidth, y - margin.Top, c);
 	//left
-	DrawRect(x-linewidth, y - linewidth, linewidth, height + linewidth, c);
+	DrawRect(Left, y - margin.Top, x - margin.Left, botm + linewidth , c );
 	//right
-	DrawRect(x + width - linewidth, y - linewidth, linewidth, height + linewidth, c);
+	DrawRect(Right,y - margin.Top, Right + linewidth , botm + linewidth, c);
 	//bottom
-	DrawRect(x - linewidth, y + height - linewidth, width + linewidth, linewidth, c);
+	DrawRect(Left, botm, Right, botm + linewidth, c);
 }
 
 
@@ -4382,3 +4388,5 @@ std::wstring Graphics::Exception::GetExceptionType() const
 {
 	return L"Chili Graphics Exception";
 }
+
+

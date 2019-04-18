@@ -2,7 +2,8 @@
 
 Board::Board(Graphics & gfx)
 	:
-	gfx(gfx)
+	gfx(gfx),
+	margin(15,15,15,15)
 {
 }
 
@@ -88,7 +89,7 @@ void Board::DrawBoundry()
 	//bottom
 	gfx.DrawRect(left, bottom - borderWidth, right, bottom, borderColor);*/
 	
-	gfx.DrawBorder(x, y, width *dimension, height *dimension, col, borderWidth, borderPadding);
+	gfx.DrawBorder(x, y, width *dimension, height *dimension, col, borderWidth, margin);
 	gfx.DrawGrid(x, y , width, height, dimension, borderColor);
 }
 
