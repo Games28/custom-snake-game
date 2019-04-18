@@ -3,7 +3,7 @@
 Board::Board(Graphics & gfx)
 	:
 	gfx(gfx),
-	margin(15,15,15,15)
+	margin(2,2,6,6)
 {
 }
 
