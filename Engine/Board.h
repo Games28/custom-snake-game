@@ -33,7 +33,7 @@ private:
 	static constexpr int y = 50;
 	static constexpr int borderWidth = 4;
 	static constexpr int borderPadding = 2;
-	static constexpr Color borderColor = Colors::MakeRGB(80,80,80);
+	static constexpr Color borderColor = Colors::MakeRGB(50,50,50);
 	static constexpr Color col = Colors::Yellow;
 	const int off_x = x;
 	const int off_y = y;
